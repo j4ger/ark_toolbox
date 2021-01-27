@@ -4,9 +4,7 @@
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>公开招募计算器</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click="this.$store.commit('resetTags')"
-        ><v-icon>mdi-autorenew</v-icon></v-btn
-      >
+      <v-btn icon @click="resetTags"><v-icon>mdi-autorenew</v-icon></v-btn>
       <v-btn icon @click="showTags = !showTags"
         ><v-icon>{{ collapse }}</v-icon></v-btn
       >
@@ -42,8 +40,11 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main>
-      <recruit :show-tags="showTags"></recruit>
+    <v-main class="pt-0">
+      <recruit
+        :show-tags="showTags"
+        @reset-tags-handler="getResetTagsHandler"
+      ></recruit>
     </v-main>
   </v-app>
 </template>
@@ -56,6 +57,7 @@ import Recruit from "./components/Recruit.vue";
   components: { Recruit }
 })
 export default class App extends Vue {
+  resetTagsHandler!: () => void;
   showTags = true;
   drawer = null;
   navItems = [
@@ -74,6 +76,12 @@ export default class App extends Vue {
     return this.showTags
       ? "mdi-unfold-less-horizontal"
       : "mdi-unfold-more-horizontal";
+  }
+  resetTags() {
+    this.resetTagsHandler();
+  }
+  getResetTagsHandler(handler: () => void) {
+    this.resetTagsHandler = handler;
   }
 }
 </script>

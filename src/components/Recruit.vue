@@ -1,10 +1,10 @@
 <template>
-  <v-container v-on:clear-tags="clearTags">
+  <v-container>
     <v-slide-y-transition>
       <v-col cols="12" sm="8" offset-sm="2" v-show="showTags">
         <v-row v-for="(group, name, index) in tags" :key="index" cols="12">
           <v-sheet class="my-2">
-            <h2 class="title">{{ name }}</h2>
+            <h3 class="medium-text-weight text-left">{{ name }}</h3>
             <v-chip-group
               v-model="selected"
               multiple
@@ -24,13 +24,25 @@
         </v-row>
       </v-col>
     </v-slide-y-transition>
+    <v-col cols="12" sm="8" offset-sm="2">
+      <v-row
+        v-for="Operator in OperatorInfos"
+        :key="Operator.rareness"
+        class="d-sm-flex flex-sm-column"
+      >
+        <operator-display :operator-info="Operator"></operator-display>
+      </v-row>
+    </v-col>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-@Component
-export default class HelloWorld extends Vue {
+import OperatorInfo from "../OperatorInfo";
+import OperatorDisplay from "./OperatorDisplay.vue";
+
+@Component({ components: { OperatorDisplay } })
+export default class Recruit extends Vue {
   @Prop({ default: true })
   showTags!: boolean;
   selected = [1];
@@ -67,8 +79,20 @@ export default class HelloWorld extends Vue {
       新手: 536870912
     }
   };
-  clearTags(): void {
+  OperatorInfos: OperatorInfo[] = [
+    {
+      profile: "https://i.loli.net/2021/01/23/cLBC8qba9uAtkVG.png",
+      name: "\u84dd\u6bd2",
+      codename: "Blue Poison",
+      rareness: 5,
+      tag: 70665
+    }
+  ];
+  resetTags(): void {
     this.selected = [1];
+  }
+  created(): void {
+    this.$emit("reset-tags-handler", this.resetTags);
   }
 }
 </script>
