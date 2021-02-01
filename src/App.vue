@@ -1,22 +1,19 @@
 <template>
   <v-app>
-    <v-app-bar dark app>
+    <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>公开招募计算器</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon @click="resetTags"><v-icon>mdi-autorenew</v-icon></v-btn>
-      <v-btn icon @click="showTags = !showTags"
-        ><v-icon>{{ collapse }}</v-icon></v-btn
-      >
+      <v-spacer> </v-spacer>
+      <v-btn icon @click="openBottomSheetClicked">
+        <v-icon>mdi-menu-open</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-navigation-drawer temporary v-model="drawer" app>
       <v-list-item>
         <v-list-item two-line link href="https://ak.rua.best/">
           <v-list-item-avatar tile size="40">
-            <v-img
-              src="https://i.loli.net/2021/01/23/cLBC8qba9uAtkVG.png"
-            ></v-img>
+            <v-img src="./assets/favicon.png"></v-img>
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title>明日方舟工具箱</v-list-item-title>
@@ -41,25 +38,26 @@
     </v-navigation-drawer>
 
     <v-main class="pt-0">
-      <recruit
-        :show-tags="showTags"
-        @reset-tags-handler="getResetTagsHandler"
-      ></recruit>
+      <recruit :openBottomSheet="openBottomSheet" ref="recruit"></recruit>
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Ref } from "vue-property-decorator";
 import Recruit from "./components/Recruit.vue";
 
+const todo1 = "axios获取json";
 @Component({
   components: { Recruit }
 })
 export default class App extends Vue {
-  resetTagsHandler!: () => void;
-  showTags = true;
-  drawer = null;
+  @Ref()
+  recruit!: Recruit;
+
+  openBottomSheet = false;
+  drawer = false;
+
   navItems = [
     {
       title: "公开招募计算器",
@@ -72,16 +70,15 @@ export default class App extends Vue {
       href: "https://ak.rua.best/about"
     }
   ];
-  get collapse(): string {
-    return this.showTags
-      ? "mdi-unfold-less-horizontal"
-      : "mdi-unfold-more-horizontal";
+
+  openBottomSheetClicked(): void {
+    this.recruit.openBottomSheet();
   }
-  resetTags() {
-    this.resetTagsHandler();
-  }
-  getResetTagsHandler(handler: () => void) {
-    this.resetTagsHandler = handler;
+
+  mounted(): void {
+    if (localStorage.darkMode) {
+      this.$vuetify.theme.dark = localStorage.darkMode;
+    }
   }
 }
 </script>
@@ -93,6 +90,6 @@ export default class App extends Vue {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 </style>
