@@ -2,31 +2,33 @@
   <v-container>
     <v-col cols="12" sm="8" offset-sm="2" class="mt-4">
       <v-expand-transition>
-        <v-container v-show="showTags" class="d-inline-flex flex-column">
-          <v-row v-for="(group, name, index) in tags" :key="index" cols="12">
-            <v-sheet class="pa-2">
-              <h3 class="medium-text-weight text-left mx-2">{{ name }}</h3>
-              <v-chip-group
-                v-model="selected[name]"
-                multiple
-                column
-                justify="space-around"
-              >
-                <v-chip
-                  v-for="(value, tag) in group"
-                  :key="value"
-                  :value="value"
-                  :disabled="tagsDisabled"
-                  filter
-                  label
-                  :color="tagColor(tag)"
-                  >{{ tag }}</v-chip
+        <div v-show="showTags">
+          <v-container class="d-inline-flex flex-column">
+            <v-row v-for="(group, name, index) in tags" :key="index" cols="12">
+              <v-sheet class="pa-2">
+                <h3 class="medium-text-weight text-left mx-2">{{ name }}</h3>
+                <v-chip-group
+                  v-model="selected[name]"
+                  multiple
+                  column
+                  justify="space-around"
                 >
-              </v-chip-group>
-              <v-divider></v-divider>
-            </v-sheet>
-          </v-row>
-        </v-container>
+                  <v-chip
+                    v-for="(value, tag) in group"
+                    :key="value"
+                    :value="value"
+                    :disabled="tagsDisabled"
+                    filter
+                    label
+                    :color="tagColor(tag)"
+                    >{{ tag }}</v-chip
+                  >
+                </v-chip-group>
+                <v-divider></v-divider>
+              </v-sheet>
+            </v-row>
+          </v-container>
+        </div>
       </v-expand-transition>
       <v-row class="mt-2">
         <operator-display
@@ -144,13 +146,8 @@ import {
   TagsSelected,
   MatchedOperators,
   OperatorInfo,
-  operators,
   getMatchedOperators
 } from "../OperatorInfo";
-
-interface ServerResponse {
-  data: OperatorInfo[];
-}
 
 @Component({ components: { OperatorDisplay } })
 export default class Recruit extends Vue {
@@ -178,8 +175,7 @@ export default class Recruit extends Vue {
     this.showOverlay = true;
     axios
       .request<OperatorInfo[]>({
-        url: "https://assets.rua.best:8443/operators.json",
-        transformResponse: (response: ServerResponse) => response.data,
+        url: "https://assets.rua.best:2083/operators.json",
         onDownloadProgress: progressEvent => {
           if (progressEvent.lengthComputable) {
             this.fetchProgress =
@@ -197,12 +193,6 @@ export default class Recruit extends Vue {
         this.overlayErrorMessage = error.message;
         this.overlayError = true;
       });
-  }
-
-  onResponseReceived(response: AxiosResponse<OperatorInfo[]>): void {
-    const { data } = response;
-    this.operators = data;
-    this.showOverlay = false;
   }
 
   get matchedOperators(): MatchedOperators[] {
@@ -246,7 +236,7 @@ export default class Recruit extends Vue {
 
     const result: MatchedOperators[] = [];
     finalCombinations.forEach(element => {
-      const matches = getMatchedOperators(operators, element);
+      const matches = getMatchedOperators(this.operators, element);
       if (matches != null) {
         result.push(matches);
       }
