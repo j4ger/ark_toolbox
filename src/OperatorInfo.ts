@@ -21,6 +21,7 @@ export interface MatchedOperators {
   operators: OperatorInfo[];
   maxRareness: number;
   minRareness: number;
+  robot: boolean;
 }
 
 export const tags = {
@@ -112,25 +113,34 @@ export function getMatchedOperators(
   tags: number
 ): MatchedOperators | null {
   const matches: OperatorInfo[] = [];
-  let maxRareness = 0;
-  let minRareness = 6;
+  let maxRareness = 1;
+  let minRareness = 7;
+  let robot = false;
   operators.forEach(each => {
     if ((each.tag & tags) >>> 0 == tags) {
       matches.push(each);
-      if (each.rareness > maxRareness) {
-        maxRareness = each.rareness;
-      }
-      if (each.rareness < minRareness) {
-        minRareness = each.rareness;
+      if (each.rareness == 1) {
+        robot = true;
+      } else {
+        if (each.rareness > maxRareness) {
+          maxRareness = each.rareness;
+        }
+        if (each.rareness < minRareness) {
+          minRareness = each.rareness;
+        }
       }
     }
   });
+  if (robot && minRareness == 7) {
+    minRareness = 1;
+  }
   return matches.length == 0
     ? null
     : {
         tags: _.without(resolveTagsFromCode(tags), "公招可见"),
         operators: _.sortBy(matches, operator => 7 - operator.rareness),
         maxRareness,
-        minRareness
+        minRareness,
+        robot
       };
 }

@@ -1,11 +1,13 @@
 <template>
-  <v-expansion-panels inset>
+  <v-expansion-panels accordion>
     <v-expand-transition
       v-for="(group, index) in sortedMatchedOperators"
       :key="index"
     >
       <v-expansion-panel @change="resetSlideSelected">
-        <v-expansion-panel-header>
+        <v-expansion-panel-header
+          :color="$vuetify.theme.dark ? 'grey darken-4' : 'white'"
+        >
           <v-col cols="6" sm="10">
             <v-chip-group>
               <v-chip
@@ -19,8 +21,19 @@
               </v-chip>
             </v-chip-group>
           </v-col>
-          <v-col cols="2" sm="2">
+          <v-col cols="2">
+            <v-badge color="grey" inline icon="mdi-robot" v-if="group.robot">
+              <v-rating
+                :value="group.minRareness"
+                :length="group.minRareness"
+                readonly
+                dense
+                color="yellow darken-3"
+                size="10"
+              ></v-rating>
+            </v-badge>
             <v-rating
+              v-else
               :value="group.minRareness"
               :length="group.minRareness"
               readonly
@@ -30,13 +43,10 @@
             ></v-rating>
           </v-col>
         </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <v-slide-group
-            class="pa-1"
-            center-active
-            show-arrows
-            v-model="slideSelected"
-          >
+        <v-expansion-panel-content
+          :color="$vuetify.theme.dark ? 'grey darken-4' : 'white'"
+        >
+          <v-slide-group class="pa-1" center-active v-model="slideSelected">
             <v-slide-item
               v-for="(operator, index) in group.operators"
               v-slot="{ active, toggle }"
@@ -46,8 +56,8 @@
                 outlined
                 class="rounded-lg transition-swing ma-2 pa-2"
                 @click="toggle"
-                height="110"
-                width="150"
+                height="90"
+                width="100"
                 :color="active ? operatorColor[operator.rareness - 1] : ''"
               >
                 <v-badge
@@ -60,7 +70,7 @@
                   dot
                 >
                   <v-avatar
-                    size="50"
+                    size="40"
                     class="rounded-lg"
                     :color="$vuetify.theme.dark ? 'grey darken-4' : 'white'"
                   >
@@ -69,9 +79,6 @@
                 </v-badge>
                 <div class="h4 font-weight-bold mt-1">
                   {{ operator.name }}
-                </div>
-                <div class="overline subtitle-2 mt-n2">
-                  {{ operator.codename }}
                 </div>
               </v-card>
             </v-slide-item>

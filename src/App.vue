@@ -40,14 +40,28 @@
     <v-main class="pt-0">
       <recruit :openBottomSheet="openBottomSheet" ref="recruit"></recruit>
     </v-main>
+    <v-footer padless class="pt-4">
+      <v-col cols="12" sm="8" offset-sm="2">
+        <v-row class="justify-center">
+          <strong class="subheading">Built with ❤ by Void04</strong>
+        </v-row>
+        <v-row class="d-flex justify-center">
+          <v-btn link icon href="https://github.com/hx64/ark_toolbox">
+            <v-icon size="24">mdi-github</v-icon>
+          </v-btn>
+          <v-btn link icon href="https://space.bilibili.com/26888199">
+            <v-icon size="24">mdi-television-classic</v-icon>
+          </v-btn>
+        </v-row>
+      </v-col>
+    </v-footer>
   </v-app>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Ref } from "vue-property-decorator";
+import { Component, Vue, Ref, Watch } from "vue-property-decorator";
 import Recruit from "./components/Recruit.vue";
 
-const todo1 = "axios获取json";
 @Component({
   components: { Recruit }
 })
@@ -57,6 +71,8 @@ export default class App extends Vue {
 
   openBottomSheet = false;
   drawer = false;
+
+  darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   navItems = [
     {
@@ -76,9 +92,16 @@ export default class App extends Vue {
   }
 
   mounted(): void {
-    if (localStorage.darkMode) {
+    if (this.darkThemeMq) {
+      this.$vuetify.theme.dark = true;
+    } else if (localStorage.darkMode) {
       this.$vuetify.theme.dark = localStorage.darkMode;
     }
+  }
+
+  @Watch("darkThemeMq")
+  onDarkModeChanged(): void {
+    this.$vuetify.theme.dark = this.darkThemeMq;
   }
 }
 </script>
