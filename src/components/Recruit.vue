@@ -260,7 +260,7 @@ export default class Recruit extends Vue {
         result.push(matches);
       }
     });
-    return result;
+    return _.sortBy(result, group => 10 - group.tags.length);
   }
 
   tagColor(tag: string): string {
@@ -272,7 +272,6 @@ export default class Recruit extends Vue {
   resetTags(): void {
     this.selected = { 获得途径: [1] };
     this.tagsDisabled = false;
-    this.operatorDisplay.resetSlideSelected();
   }
 
   updateLocalStorage(): void {

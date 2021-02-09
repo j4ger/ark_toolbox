@@ -79,11 +79,6 @@ export default class App extends Vue {
       title: "公开招募计算器",
       icon: "mdi-magnify",
       href: "https://ak.rua.best/recruit"
-    },
-    {
-      title: "关于",
-      icon: "mdi-account-question",
-      href: "https://ak.rua.best/about"
     }
   ];
 
