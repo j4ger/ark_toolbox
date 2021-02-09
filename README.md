@@ -1,24 +1,30 @@
-# ark_toolbox
+# 明日方舟工具箱（迫真）
 
-## Project setup
+## 前言
+
+    使用vue全家桶构建的练手项目，正逐步迁移至GitHub Pages
+    干员数据可能需要一天左右更新
+
+## 安装依赖项
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 运行本地服务器
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 编译
+
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### 语法检查
+
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
