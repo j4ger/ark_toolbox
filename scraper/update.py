@@ -14,10 +14,20 @@ output = "./operators.json"
 
 
 def new_op(name, codename, rareness, tag, profile_url):
-    if not os.path.exists(f"./profiles/{codename}.png"):
+    if not os.path.exists(
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), f"./profiles/{codename}.png"
+        )
+    ):
         res = requests.get(profile_url)
         if res.status_code == 200:
-            with open(f"./profiles/{codename}.png", "wb") as f:
+            with open(
+                os.path.join(
+                    os.path.dirname(os.path.abspath(__file__)),
+                    f"./profiles/{codename}.png",
+                ),
+                "wb",
+            ) as f:
                 f.write(res.content)
         else:
             raise ConnectionError(res.status_code)
@@ -47,17 +57,35 @@ def update_data(new_op):
     if not os.path.exists(output):
         current = []
     else:
-        f = open(output, "r")
+        f = open(
+            os.path.join(
+                os.path.dirname(os.path.abspath(__file__)),
+                output,
+            ),
+            "r",
+        )
         current = json.loads(f.read())
         f.close()
     if new_op is not None:
-        f = open(output, "w")
+        f = open(
+            os.path.join(
+                os.path.dirname(os.path.abspath(__file__)),
+                output,
+            ),
+            "w",
+        )
         current.append(new_op)
         json.dump(current, f)
         f.close()
 
 
-with open("./tags.json", "r") as f:
+with open(
+    os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "./tags.json",
+    ),
+    "r",
+) as f:
     tags_dict = json.load(f)
 
 
