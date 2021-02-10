@@ -10,13 +10,13 @@ from selenium.webdriver.support.select import Select as Select
 from bs4 import BeautifulSoup
 from urllib.parse import unquote
 
-output = "./operators.json"
+output = "operators.json"
 
 
 def new_op(name, codename, rareness, tag, profile_url):
     if not os.path.exists(
         os.path.join(
-            os.path.dirname(os.path.abspath(__file__)), f"./profiles/{codename}.png"
+            os.path.dirname(os.path.abspath(__file__)), f"profiles/{codename}.png"
         )
     ):
         res = requests.get(profile_url)
@@ -24,7 +24,7 @@ def new_op(name, codename, rareness, tag, profile_url):
             with open(
                 os.path.join(
                     os.path.dirname(os.path.abspath(__file__)),
-                    f"./profiles/{codename}.png",
+                    f"profiles/{codename}.png",
                 ),
                 "wb",
             ) as f:
@@ -82,7 +82,7 @@ def update_data(new_op):
 with open(
     os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
-        "./tags.json",
+        "tags.json",
     ),
     "r",
 ) as f:
