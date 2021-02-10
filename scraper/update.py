@@ -110,14 +110,24 @@ for each in op_soup.find_all("tr", class_="result-row"):
     if rareness == 6:
         tag += tags_dict["高级资深干员"]
 
-    detail_url = "http://prts.wiki" + each.contents[1].div.a["href"]
-    driver.get(detail_url)
-    detail_content = driver.page_source
-    detail_soup = BeautifulSoup(detail_content, "html5lib")
+    retry = 5
+    while retry > 0:
+        try:
+            detail_url = "http://prts.wiki" + each.contents[1].div.a["href"]
+            driver.get(detail_url)
+            detail_content = driver.page_source
+            detail_soup = BeautifulSoup(detail_content, "html5lib")
 
-    acquire_method = detail_soup.find(
-        "th", style="width:25%; background-color:#797979;", string="获得方式\n"
-    ).next_sibling.next_sibling.get_text()
+            acquire_method = detail_soup.find(
+                "th", style="width:25%; background-color:#797979;", string="获得方式\n"
+            ).next_sibling.next_sibling.get_text()
+            break
+        except Exception as e:
+            if retry > 0:
+                retry -= 1
+            else:
+                raise ConnectionError("获取详情错误")
+
     if "公开招募" in acquire_method:
         tag += tags_dict["公招可见"]
 
