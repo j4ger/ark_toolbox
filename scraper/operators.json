@@ -404,13 +404,13 @@
     "name": "\u9ea6\u54f2\u4f26",
     "codename": "Magallan",
     "rareness": 6,
-    "tag": 2147849280
+    "tag": 2147849281
   },
   {
     "name": "\u9001\u846c\u4eba",
     "codename": "Executor",
     "rareness": 5,
-    "tag": 1073875976
+    "tag": 1073875977
   },
   {
     "name": "\u708e\u5ba2",
@@ -422,7 +422,7 @@
     "name": "\u7ea2\u4e91",
     "codename": "Vermeil",
     "rareness": 4,
-    "tag": 70664
+    "tag": 70665
   },
   {
     "name": "\u575a\u96f7",
@@ -434,26 +434,26 @@
     "name": "\u8d6b\u62c9\u683c",
     "codename": "Hellagur",
     "rareness": 6,
-    "tag": 2148076036
+    "tag": 2148076037
   },
   {
     "name": "\u661f\u6781",
     "codename": "Astesia",
     "rareness": 5,
-    "tag": 1074860548
+    "tag": 1074860549
   },
   {
     "name": "\u6843\u91d1\u5a18",
     "codename": "Myrtle",
     "rareness": 4,
-    "tag": 134238722
+    "tag": 134238723
   },
-  { "name": "\u9ed1", "codename": "Schwarz", "rareness": 6, "tag": 2147554312 },
+  { "name": "\u9ed1", "codename": "Schwarz", "rareness": 6, "tag": 2147554313 },
   {
     "name": "\u683c\u52b3\u514b\u65af",
     "codename": "Glaucus",
     "rareness": 5,
-    "tag": 1082397760
+    "tag": 1082397761
   },
   {
     "name": "\u9521\u5170",
@@ -465,33 +465,33 @@
     "name": "\u82cf\u82cf\u6d1b",
     "codename": "Sussurro",
     "rareness": 4,
-    "tag": 21536
+    "tag": 21537
   },
-  { "name": "\u9648", "codename": "Ch'en", "rareness": 6, "tag": 2164331012 },
+  { "name": "\u9648", "codename": "Ch'en", "rareness": 6, "tag": 2164331013 },
   {
     "name": "\u8bd7\u6000\u96c5",
     "codename": "Swire",
     "rareness": 5,
-    "tag": 1073844740
+    "tag": 1073844741
   },
   {
     "name": "\u683c\u96f7\u4f0a",
     "codename": "Greyy",
     "rareness": 4,
-    "tag": 396416
+    "tag": 396417
   },
-  { "name": "\u6591\u70b9", "codename": "Spot", "rareness": 3, "tag": 1067536 },
+  { "name": "\u6591\u70b9", "codename": "Spot", "rareness": 3, "tag": 1067537 },
   {
     "name": "\u6ce1\u666e\u5361",
     "codename": "Popukar",
     "rareness": 3,
-    "tag": 659972
+    "tag": 659973
   },
   {
     "name": "\u65af\u5361\u8482",
     "codename": "Skadi",
     "rareness": 6,
-    "tag": 2148078084
+    "tag": 2148078085
   },
   {
     "name": "\u683c\u62c9\u5c3c",
@@ -503,25 +503,25 @@
     "name": "\u591c\u9b54",
     "codename": "Nightmare",
     "rareness": 5,
-    "tag": 1074091136
+    "tag": 1074091137
   },
   {
     "name": "\u730e\u8702",
     "codename": "Beehunter",
     "rareness": 4,
-    "tag": 70148
+    "tag": 70149
   },
   {
     "name": "\u6708\u89c1\u591c",
     "codename": "Midnight",
     "rareness": 3,
-    "tag": 68100
+    "tag": 68101
   },
   {
     "name": "\u7a7a\u7206",
     "codename": "Catapult",
     "rareness": 3,
-    "tag": 136200
+    "tag": 136201
   },
   {
     "name": "\u66b4\u884c",
@@ -533,31 +533,31 @@
     "name": "\u94f6\u7070",
     "codename": "SilverAsh",
     "rareness": 6,
-    "tag": 2147584516
+    "tag": 2147584517
   },
   {
     "name": "\u585e\u96f7\u5a05",
     "codename": "Saria",
     "rareness": 6,
-    "tag": 2148586000
+    "tag": 2148586001
   },
   {
     "name": "\u661f\u718a",
     "codename": "Hoshiguma",
     "rareness": 6,
-    "tag": 2148602384
+    "tag": 2148602385
   },
   {
     "name": "\u591c\u83ba",
     "codename": "Nightingale",
     "rareness": 6,
-    "tag": 2147537952
+    "tag": 2147537953
   },
   {
     "name": "\u95ea\u7075",
     "codename": "Shining",
     "rareness": 6,
-    "tag": 2147537952
+    "tag": 2147537953
   },
   {
     "name": "\u5b89\u6d01\u8389\u5a1c",
@@ -575,110 +575,110 @@
     "name": "\u4f0a\u8299\u5229\u7279",
     "codename": "Ifrit",
     "rareness": 6,
-    "tag": 2149717120
+    "tag": 2149717121
   },
   {
     "name": "\u63a8\u8fdb\u4e4b\u738b",
     "codename": "Siege",
     "rareness": 6,
-    "tag": 2281771522
+    "tag": 2281771523
   },
   {
     "name": "\u80fd\u5929\u4f7f",
     "codename": "Exusiai",
     "rareness": 6,
-    "tag": 2147554312
+    "tag": 2147554313
   },
   {
     "name": "\u98df\u94c1\u517d",
     "codename": "FEater",
     "rareness": 5,
-    "tag": 1078203136
+    "tag": 1078203137
   },
   {
     "name": "\u72ee\u874e",
     "codename": "Manticore",
     "rareness": 5,
-    "tag": 1074336512
+    "tag": 1074336513
   },
   { "name": "\u7a7a", "codename": "Sora", "rareness": 5, "tag": 1073796160 },
   {
     "name": "\u771f\u7406",
     "codename": "\u0418\u0441\u0442\u0438\u043d\u0430",
     "rareness": 5,
-    "tag": 1074074688
+    "tag": 1074074689
   },
   {
     "name": "\u521d\u96ea",
     "codename": "Pramanix",
     "rareness": 5,
-    "tag": 1075844160
+    "tag": 1075844161
   },
   {
     "name": "\u5d16\u5fc3",
     "codename": "Cliffheart",
     "rareness": 5,
-    "tag": 1078006528
+    "tag": 1078006529
   },
   {
     "name": "\u5b88\u6797\u4eba",
     "codename": "Firewatch",
     "rareness": 5,
-    "tag": 1090589704
+    "tag": 1090589705
   },
   {
     "name": "\u666e\u7f57\u65fa\u65af",
     "codename": "Provence",
     "rareness": 5,
-    "tag": 1073812488
+    "tag": 1073812489
   },
   {
     "name": "\u706b\u795e",
     "codename": "Vulcan",
     "rareness": 5,
-    "tag": 1075384848
+    "tag": 1075384849
   },
   {
     "name": "\u53ef\u9882",
     "codename": "Croissant",
     "rareness": 5,
-    "tag": 1078989328
+    "tag": 1078989329
   },
   {
     "name": "\u96f7\u86c7",
     "codename": "Liskarm",
     "rareness": 5,
-    "tag": 1074860560
+    "tag": 1074860561
   },
   {
     "name": "\u7ea2",
     "codename": "Projekt Red",
     "rareness": 5,
-    "tag": 1149244160
+    "tag": 1149244161
   },
   {
     "name": "\u4e34\u5149",
     "codename": "Nearl",
     "rareness": 5,
-    "tag": 1074811408
+    "tag": 1074811409
   },
   {
     "name": "\u534e\u6cd5\u7433",
     "codename": "Warfarin",
     "rareness": 5,
-    "tag": 1073796128
+    "tag": 1073796129
   },
   {
     "name": "\u8d6b\u9ed8",
     "codename": "Silence",
     "rareness": 5,
-    "tag": 1073763360
+    "tag": 1073763361
   },
   {
     "name": "\u6885\u5c14",
     "codename": "Mayer",
     "rareness": 5,
-    "tag": 1115690048
+    "tag": 1115690049
   },
   {
     "name": "\u5929\u706b",
@@ -696,25 +696,25 @@
     "name": "\u9668\u661f",
     "codename": "Meteorite",
     "rareness": 5,
-    "tag": 1075975176
+    "tag": 1075975177
   },
   {
     "name": "\u767d\u91d1",
     "codename": "Platinum",
     "rareness": 5,
-    "tag": 1073812488
+    "tag": 1073812489
   },
   {
     "name": "\u84dd\u6bd2",
     "codename": "Blue Poison",
     "rareness": 5,
-    "tag": 1073812488
+    "tag": 1073812489
   },
   {
     "name": "\u5e7d\u7075\u9ca8",
     "codename": "Specter",
     "rareness": 5,
-    "tag": 1074401796
+    "tag": 1074401797
   },
   {
     "name": "\u62c9\u666e\u5170\u5fb7",
@@ -726,7 +726,7 @@
     "name": "\u56e0\u9640\u7f57",
     "codename": "Indra",
     "rareness": 5,
-    "tag": 1074336260
+    "tag": 1074336261
   },
   {
     "name": "\u8299\u5170\u5361",
@@ -738,26 +738,26 @@
     "name": "\u5fb7\u514b\u8428\u65af",
     "codename": "Texas",
     "rareness": 5,
-    "tag": 1216352770
+    "tag": 1216352771
   },
   {
     "name": "\u51db\u51ac",
     "codename": "\u0417\u0438\u043c\u0430",
     "rareness": 5,
-    "tag": 1207996930
+    "tag": 1207996931
   },
   {
     "name": "\u767d\u9762\u9e2e",
     "codename": "Ptilopsis",
     "rareness": 5,
-    "tag": 1073796128
+    "tag": 1073796129
   },
-  { "name": "\u963f\u6d88", "codename": "Shaw", "rareness": 4, "tag": 4199168 },
+  { "name": "\u963f\u6d88", "codename": "Shaw", "rareness": 4, "tag": 4199169 },
   {
     "name": "\u5730\u7075",
     "codename": "Earthspirit",
     "rareness": 4,
-    "tag": 267328
+    "tag": 267329
   },
   {
     "name": "\u6df1\u6d77\u8272",
@@ -769,25 +769,25 @@
     "name": "\u53e4\u7c73",
     "codename": "\u0413\u0443\u043c",
     "rareness": 4,
-    "tag": 1069584
+    "tag": 1069585
   },
   {
     "name": "\u86c7\u5c60\u7bb1",
     "codename": "Cuora",
     "rareness": 4,
-    "tag": 1053200
+    "tag": 1053201
   },
   {
     "name": "\u89d2\u5cf0",
     "codename": "Matterhorn",
     "rareness": 4,
-    "tag": 1051152
+    "tag": 1051153
   },
   {
     "name": "\u8c03\u9999\u5e08",
     "codename": "Perfumer",
     "rareness": 4,
-    "tag": 21536
+    "tag": 21537
   },
   {
     "name": "\u5609\u7ef4\u5c14",
@@ -795,45 +795,45 @@
     "rareness": 4,
     "tag": 21536
   },
-  { "name": "\u672b\u836f", "codename": "Myrrh", "rareness": 4, "tag": 21536 },
-  { "name": "\u6697\u7d22", "codename": "Rope", "rareness": 4, "tag": 4199168 },
-  { "name": "\u783e", "codename": "Gravel", "rareness": 4, "tag": 68162304 },
-  { "name": "\u6155\u65af", "codename": "Mousse", "rareness": 4, "tag": 70148 },
+  { "name": "\u672b\u836f", "codename": "Myrrh", "rareness": 4, "tag": 21537 },
+  { "name": "\u6697\u7d22", "codename": "Rope", "rareness": 4, "tag": 4199169 },
+  { "name": "\u783e", "codename": "Gravel", "rareness": 4, "tag": 68162305 },
+  { "name": "\u6155\u65af", "codename": "Mousse", "rareness": 4, "tag": 70149 },
   {
     "name": "\u827e\u4e1d\u9edb\u5c14",
     "codename": "Estelle",
     "rareness": 4,
-    "tag": 659972
+    "tag": 659973
   },
   {
     "name": "\u971c\u53f6",
     "codename": "Frostleaf",
     "rareness": 4,
-    "tag": 332292
+    "tag": 332293
   },
   {
     "name": "\u7f20\u4e38",
     "codename": "Matoimaru",
     "rareness": 4,
-    "tag": 594436
+    "tag": 594437
   },
   {
     "name": "\u675c\u5bbe",
     "codename": "Dobermann",
     "rareness": 4,
-    "tag": 102916
+    "tag": 102917
   },
   {
     "name": "\u7ea2\u8c46",
     "codename": "Vigna",
     "rareness": 4,
-    "tag": 134287874
+    "tag": 134287875
   },
   {
     "name": "\u6e05\u9053\u592b",
     "codename": "Scavenger",
     "rareness": 4,
-    "tag": 134287874
+    "tag": 134287875
   },
   {
     "name": "\u8baf\u4f7f",
@@ -845,69 +845,69 @@
     "name": "\u767d\u96ea",
     "codename": "ShiraYuki",
     "rareness": 4,
-    "tag": 398344
+    "tag": 398345
   },
   {
     "name": "\u6d41\u661f",
     "codename": "Meteor",
     "rareness": 4,
-    "tag": 2167816
+    "tag": 2167817
   },
   {
     "name": "\u6770\u897f\u5361",
     "codename": "Jessica",
     "rareness": 4,
-    "tag": 594952
+    "tag": 594953
   },
   {
     "name": "\u8fdc\u5c71",
     "codename": "Gitano",
     "rareness": 4,
-    "tag": 136320
+    "tag": 136321
   },
-  { "name": "\u591c\u70df", "codename": "Haze", "rareness": 4, "tag": 2167936 },
+  { "name": "\u591c\u70df", "codename": "Haze", "rareness": 4, "tag": 2167937 },
   {
     "name": "\u6893\u5170",
     "codename": "Orchid",
     "rareness": 3,
-    "tag": 267328
+    "tag": 267329
   },
   {
     "name": "\u53f2\u90fd\u534e\u5fb7",
     "codename": "Steward",
     "rareness": 3,
-    "tag": 68736
+    "tag": 68737
   },
   {
     "name": "\u5b89\u8d5b\u5c14",
     "codename": "Ansel",
     "rareness": 3,
-    "tag": 19488
+    "tag": 19489
   },
   {
     "name": "\u8299\u84c9",
     "codename": "Hibiscus",
     "rareness": 3,
-    "tag": 21536
+    "tag": 21537
   },
-  { "name": "\u708e\u7194", "codename": "Lava", "rareness": 3, "tag": 136320 },
+  { "name": "\u708e\u7194", "codename": "Lava", "rareness": 3, "tag": 136321 },
   {
     "name": "\u5b89\u5fb7\u5207\u5c14",
     "codename": "Adnachiel",
     "rareness": 3,
-    "tag": 68616
+    "tag": 68617
   },
   {
     "name": "\u514b\u6d1b\u4e1d",
     "codename": "Kroos",
     "rareness": 3,
-    "tag": 70664
+    "tag": 70665
   },
   {
     "name": "\u7c73\u683c\u9c81",
     "codename": "Beagle",
     "rareness": 3,
-    "tag": 1053200
+    "tag": 1053201
   },
   {
     "name": "\u5361\u7f07",
@@ -919,56 +919,56 @@
     "name": "\u73ab\u5170\u838e",
     "codename": "Melantha",
     "rareness": 3,
-    "tag": 594436
+    "tag": 594437
   },
   {
     "name": "\u7fce\u7fbd",
     "codename": "Plume",
     "rareness": 3,
-    "tag": 134287874
+    "tag": 134287875
   },
   {
     "name": "\u9999\u8349",
     "codename": "Vanilla",
     "rareness": 3,
-    "tag": 134222338
+    "tag": 134222339
   },
-  { "name": "\u82ac", "codename": "Fang", "rareness": 3, "tag": 134222338 },
-  { "name": "12F", "codename": "12F", "rareness": 2, "tag": 536874112 },
+  { "name": "\u82ac", "codename": "Fang", "rareness": 3, "tag": 134222339 },
+  { "name": "12F", "codename": "12F", "rareness": 2, "tag": 536874113 },
   {
     "name": "\u675c\u6797",
     "codename": "Durin",
     "rareness": 2,
-    "tag": 536876160
+    "tag": 536876161
   },
   {
     "name": "\u5de1\u6797\u8005",
     "codename": "Rangers",
     "rareness": 2,
-    "tag": 536873992
+    "tag": 536873993
   },
   {
     "name": "\u9ed1\u89d2",
     "codename": "Noir Corne",
     "rareness": 2,
-    "tag": 536873488
+    "tag": 536873489
   },
   {
     "name": "\u591c\u5200",
     "codename": "Yato",
     "rareness": 2,
-    "tag": 536875522
+    "tag": 536875523
   },
   {
     "name": "Castle-3",
     "codename": "Castle-3",
     "rareness": 1,
-    "tag": 268470788
+    "tag": 268470789
   },
   {
     "name": "Lancet-2",
     "codename": "Lancet-2",
     "rareness": 1,
-    "tag": 268456992
+    "tag": 268456993
   }
 ]
