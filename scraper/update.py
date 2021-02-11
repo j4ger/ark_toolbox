@@ -52,33 +52,6 @@ select.select_by_visible_text("500")
 op_content = driver.page_source
 op_soup = BeautifulSoup(op_content, "html5lib")
 
-
-def update_data(new_op):
-    if not os.path.exists(output):
-        current = []
-    else:
-        f = open(
-            os.path.join(
-                os.path.dirname(os.path.abspath(__file__)),
-                output,
-            ),
-            "r",
-        )
-        current = json.loads(f.read())
-        f.close()
-    if new_op is not None:
-        f = open(
-            os.path.join(
-                os.path.dirname(os.path.abspath(__file__)),
-                output,
-            ),
-            "w",
-        )
-        current.append(new_op)
-        json.dump(current, f)
-        f.close()
-
-
 with open(
     os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -88,8 +61,8 @@ with open(
 ) as f:
     tags_dict = json.load(f)
 
-
 success = 0
+operators = []
 
 for each in op_soup.find_all("tr", class_="result-row"):
     name = each.contents[1].div.a.div.string
@@ -126,19 +99,33 @@ for each in op_soup.find_all("tr", class_="result-row"):
             if retry > 0:
                 retry -= 1
             else:
-                raise ConnectionError("获取详情错误")
+                raise ConnectionError(f"获取 {name} 详情错误")
 
     if "公开招募" in acquire_method:
         tag += tags_dict["公招可见"]
 
-    try:
-        add_op = new_op(name, codename, rareness, tag, profile_url)
-    except Exception as e:
-        print("错误：", e)
-        break
+    retry = 5
+    while retry > 0:
+        try:
+            add_op = new_op(name, codename, rareness, tag, profile_url)
+            break
+        except Exception as e:
+            if retry > 0:
+                retry -= 1
+            else:
+                raise ConnectionError(f"下载 {name} 图片错误")
 
     success += 1
     print("添加干员：" + name)
-    update_data(add_op)
+    operators.append(add_op)
+
+with open(
+    os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        output,
+    ),
+    "w",
+) as f:
+    json.dump(operators, f)
 
 print("结束，添加总数" + str(success))

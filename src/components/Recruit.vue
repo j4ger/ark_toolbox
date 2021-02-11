@@ -194,7 +194,8 @@ export default class Recruit extends Vue {
     this.showOverlay = true;
     axios
       .request<OperatorInfo[]>({
-        url: "https://assets.rua.best:2083/operators.json",
+        url:
+          "https://cdn.jsdelivr.net/gh/V04/ark_toolbox@latest/scraper/operators.json",
         onDownloadProgress: progressEvent => {
           if (progressEvent.lengthComputable) {
             this.fetchProgress =
