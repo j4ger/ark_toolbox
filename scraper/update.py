@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select as Select
 from bs4 import BeautifulSoup
 from urllib.parse import unquote
+import xml.etree.ElementTree as ET
 
 output = "operators.json"
 
@@ -129,3 +130,7 @@ with open(
     json.dump(operators, f)
 
 print("结束，添加总数" + str(success))
+purge_response = requests.get(
+    "https://purge.jsdelivr.net/gh/V04/ark_toolbox@latest/scraper/operators.json"
+).json()["quantil"]
+print("jsDelivr刷新缓存状态：{purge_response}")
