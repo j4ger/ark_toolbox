@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container id="root">
     <v-row>
       <v-expansion-panels accordion>
         <v-expand-transition
@@ -90,7 +90,13 @@
                               $vuetify.theme.dark ? 'grey darken-4' : 'white'
                             "
                           >
-                            <v-img :src="operator.profile"></v-img>
+                            <v-img
+                              :src="
+                                'https://cdn.jsdelivr.net/gh/V04/ark_toolbox@latest/scraper/profiles/' +
+                                  operator.codename +
+                                  '.png'
+                              "
+                            ></v-img>
                           </v-avatar>
                         </v-badge>
                         <div class="h4 font-weight-bold mt-1">
@@ -133,7 +139,13 @@
               </v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-avatar size="120">
-              <v-img :src="selected.profile"></v-img>
+              <v-img
+                :src="
+                  'https://cdn.jsdelivr.net/gh/V04/ark_toolbox@latest/scraper/profiles/' +
+                    selected.codename +
+                    '.png'
+                "
+              ></v-img>
             </v-list-item-avatar>
           </v-list-item>
           <v-card-actions class="mb-3">
@@ -199,3 +211,9 @@ export default class OperatorDisplay extends Vue {
   }
 }
 </script>
+
+<style>
+#root .v-slide-group__wrapper {
+  touch-action: auto;
+}
+</style>
