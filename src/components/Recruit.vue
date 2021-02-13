@@ -14,7 +14,7 @@
                 cols="12"
               >
                 <v-sheet
-                  class="pa-2"
+                  class="pa-4"
                   id="groups"
                   :color="$vuetify.theme.dark ? 'grey darken-4' : 'white'"
                 >
