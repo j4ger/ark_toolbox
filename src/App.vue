@@ -1,10 +1,13 @@
 <template>
   <v-app>
     <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        @click="drawer = true"
+        aria-label="打开导航侧栏"
+      ></v-app-bar-nav-icon>
       <v-toolbar-title>公开招募计算器</v-toolbar-title>
       <v-spacer> </v-spacer>
-      <v-btn icon @click="openBottomSheetClicked">
+      <v-btn icon @click="openBottomSheetClicked" aria-label="打开菜单">
         <v-icon>mdi-menu-open</v-icon>
       </v-btn>
     </v-app-bar>
@@ -47,10 +50,12 @@
         </v-row>
         <v-row class="d-flex justify-center">
           <v-btn link icon href="https://github.com/hx64/ark_toolbox">
-            <v-icon size="24">mdi-github</v-icon>
+            <v-icon size="24" aria-label="Github">mdi-github</v-icon>
           </v-btn>
           <v-btn link icon href="https://space.bilibili.com/26888199">
-            <v-icon size="24">mdi-television-classic</v-icon>
+            <v-icon size="24" aria-label="BiliBili"
+              >mdi-television-classic</v-icon
+            >
           </v-btn>
         </v-row>
       </v-col>
@@ -63,7 +68,17 @@ import { Component, Vue, Ref, Watch } from "vue-property-decorator";
 import Recruit from "./components/Recruit.vue";
 
 @Component({
-  components: { Recruit }
+  components: { Recruit },
+  metaInfo: {
+    meta: [
+      { name: "description", content: "明日方舟 公开招募计算器" },
+      {
+        name: "keywords",
+        content: "明日方舟 arknights 公开招募 公开招募计算器 公招 公招计算器"
+      },
+      { name: "author", content: "Void04" }
+    ]
+  }
 })
 export default class App extends Vue {
   @Ref()
