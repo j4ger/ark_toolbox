@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { invert, sortBy, without } from "lodash";
 
 export interface OperatorInfo {
   profile: string;
@@ -105,7 +105,7 @@ export function resolveTagsFromCode(code: number): string[] {
     i++;
     code = Math.floor(code / 2);
   }
-  return separatedTagCodes.map(eachTag => _.invert(tags)[eachTag]);
+  return separatedTagCodes.map(eachTag => invert(tags)[eachTag]);
 }
 
 export function getMatchedOperators(
@@ -137,8 +137,8 @@ export function getMatchedOperators(
   return matches.length == 0
     ? null
     : {
-        tags: _.without(resolveTagsFromCode(tags), "公招可见"),
-        operators: _.sortBy(matches, operator => 7 - operator.rareness),
+        tags: without(resolveTagsFromCode(tags), "公招可见"),
+        operators: sortBy(matches, operator => 7 - operator.rareness),
         maxRareness,
         minRareness,
         robot

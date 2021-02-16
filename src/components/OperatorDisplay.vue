@@ -172,7 +172,7 @@ import {
   resolveTagsFromCode
 } from "../OperatorInfo";
 import { Component, Prop, Vue } from "vue-property-decorator";
-import _ from "lodash";
+import { sortBy } from "lodash";
 
 @Component
 export default class OperatorDisplay extends Vue {
@@ -189,9 +189,9 @@ export default class OperatorDisplay extends Vue {
 
   get sortedMatchedOperators() {
     if (this.sortByMaxRareness) {
-      return _.sortBy(this.matchedOperators, group => 7 - group.maxRareness);
+      return sortBy(this.matchedOperators, group => 7 - group.maxRareness);
     } else {
-      return _.sortBy(this.matchedOperators, group => 7 - group.minRareness);
+      return sortBy(this.matchedOperators, group => 7 - group.minRareness);
     }
   }
 

@@ -156,7 +156,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Ref } from "vue-property-decorator";
-import _ from "lodash";
+import { concat, pull, flatMap, sortBy, has } from "lodash";
 import axios from "axios";
 import lodashCombinations from "../lodashCombinations";
 import {
@@ -166,7 +166,11 @@ import {
   OperatorInfo,
   getMatchedOperators
 } from "../OperatorInfo";
-const OperatorDisplay = () => import("./OperatorDisplay.vue");
+const OperatorDisplay = () =>
+  import(
+    /* webpackChunkName: "/OperatorDisplay" */
+    "./OperatorDisplay.vue"
+  );
 
 @Component({ components: { OperatorDisplay } })
 export default class Recruit extends Vue {
@@ -218,17 +222,17 @@ export default class Recruit extends Vue {
   get matchedOperators(): MatchedOperators[] {
     const baseElements: number[][] = [
       this.selected.获得途径?.length == 1 ? [1] : [0],
-      _.concat(this.selected.职业 ?? [], [0]),
-      _.concat(this.selected.部署位 ?? [], [0]),
-      _.concat(this.selected.性别 ?? [], [0]),
+      concat(this.selected.职业 ?? [], [0]),
+      concat(this.selected.部署位 ?? [], [0]),
+      concat(this.selected.性别 ?? [], [0]),
 
       [0]
     ];
 
-    if (_.has(this.selected, "一般标签")) {
-      baseElements[4] = _.concat(
+    if (has(this.selected, "一般标签")) {
+      baseElements[4] = concat(
         [0],
-        _.flatMap(this.selected.一般标签, (v, i, a) =>
+        flatMap(this.selected.一般标签, (v, i, a) =>
           lodashCombinations(a, i + 1).map(each =>
             each.reduce((sum, element) => sum + element)
           )
@@ -251,8 +255,8 @@ export default class Recruit extends Vue {
         });
       });
     });
-    _.pull(finalCombinations, 0);
-    _.pull(finalCombinations, 1);
+    pull(finalCombinations, 0);
+    pull(finalCombinations, 1);
 
     const result: MatchedOperators[] = [];
     finalCombinations.forEach(element => {
@@ -261,7 +265,7 @@ export default class Recruit extends Vue {
         result.push(matches);
       }
     });
-    return _.sortBy(result, group => 10 - group.tags.length);
+    return sortBy(result, group => 10 - group.tags.length);
   }
 
   tagColor(tag: string): string {

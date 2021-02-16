@@ -1,6 +1,6 @@
 // Modified from https://github.com/SeregPie/lodash.combinations
 
-import _ from "lodash";
+import { values } from "lodash";
 
 function recur<T>(array: T[], n: number): T[][] {
   if (--n < 0) {
@@ -24,7 +24,7 @@ export default function lodashCombinations<T>(
   collection: _.List<T>,
   n: number
 ) {
-  const array = _.values(collection);
+  const array = values(collection);
   if (array.length < n) {
     return [];
   }

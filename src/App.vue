@@ -67,7 +67,7 @@
 import { Component, Vue, Ref, Watch } from "vue-property-decorator";
 const Recruit = () =>
   import(
-    /* webpackChunkName: "/js/Recruit" */
+    /* webpackChunkName: "/Recruit" */
     "./components/Recruit.vue"
   );
 
