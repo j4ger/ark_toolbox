@@ -159,7 +159,6 @@ import { Component, Vue, Watch, Ref } from "vue-property-decorator";
 import _ from "lodash";
 import axios from "axios";
 import lodashCombinations from "../lodashCombinations";
-import OperatorDisplay from "./OperatorDisplay.vue";
 import {
   tagsGrouped,
   TagsSelected,
@@ -167,11 +166,12 @@ import {
   OperatorInfo,
   getMatchedOperators
 } from "../OperatorInfo";
+const OperatorDisplay = () => import("./OperatorDisplay.vue");
 
 @Component({ components: { OperatorDisplay } })
 export default class Recruit extends Vue {
   @Ref()
-  operatorDisplay!: OperatorDisplay;
+  operatorDisplay!: any;
 
   tags = tagsGrouped;
 

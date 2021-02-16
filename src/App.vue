@@ -65,7 +65,11 @@
 
 <script lang="ts">
 import { Component, Vue, Ref, Watch } from "vue-property-decorator";
-import Recruit from "./components/Recruit.vue";
+const Recruit = () =>
+  import(
+    /* webpackChunkName: "/js/Recruit" */
+    "./components/Recruit.vue"
+  );
 
 @Component({
   components: { Recruit },
@@ -82,7 +86,7 @@ import Recruit from "./components/Recruit.vue";
 })
 export default class App extends Vue {
   @Ref()
-  recruit!: Recruit;
+  recruit!: any;
 
   openBottomSheet = false;
   drawer = false;
