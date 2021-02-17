@@ -92,7 +92,7 @@
                           >
                             <v-img
                               :src="
-                                'https://cdn.jsdelivr.net/gh/V04/ark_toolbox@latest/scraper/profiles/' +
+                                'https://cdn.jsdelivr.net/gh/j4ger/ark_toolbox@latest/scraper/profiles/' +
                                   operator.codename +
                                   '.png'
                               "
@@ -141,7 +141,7 @@
             <v-list-item-avatar size="120">
               <v-img
                 :src="
-                  'https://cdn.jsdelivr.net/gh/V04/ark_toolbox@latest/scraper/profiles/' +
+                  'https://cdn.jsdelivr.net/gh/j4ger/ark_toolbox@latest/scraper/profiles/' +
                     selected.codename +
                     '.png'
                 "

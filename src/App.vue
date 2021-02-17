@@ -46,10 +46,10 @@
     <v-footer padless class="pt-4">
       <v-col cols="12" sm="8" offset-sm="2">
         <v-row class="justify-center">
-          <strong class="subheading">Built with ❤ by Void04</strong>
+          <strong class="subheading">Built with ❤ by J4ger</strong>
         </v-row>
         <v-row class="d-flex justify-center">
-          <v-btn link icon href="https://github.com/hx64/ark_toolbox">
+          <v-btn link icon href="https://github.com/j4ger/ark_toolbox">
             <v-icon size="24" aria-label="Github">mdi-github</v-icon>
           </v-btn>
           <v-btn link icon href="https://space.bilibili.com/26888199">

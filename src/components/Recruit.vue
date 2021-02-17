@@ -199,7 +199,7 @@ export default class Recruit extends Vue {
     axios
       .request<OperatorInfo[]>({
         url:
-          "https://cdn.jsdelivr.net/gh/V04/ark_toolbox@latest/scraper/operators.json",
+          "https://cdn.jsdelivr.net/gh/j4ger/ark_toolbox@latest/scraper/operators.json",
         onDownloadProgress: progressEvent => {
           if (progressEvent.lengthComputable) {
             this.fetchProgress =
