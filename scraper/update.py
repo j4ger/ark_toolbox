@@ -16,18 +16,16 @@ output = "operators.json"
 
 def new_op(name, codename, rareness, tag, profile_url):
     if not os.path.exists(
-        os.path.join(
-            os.path.dirname(os.path.abspath(__file__)), f"profiles/{codename}.png"
-        )
-    ):
+            os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                         f"profiles/{codename}.png")):
         res = requests.get(profile_url)
         if res.status_code == 200:
             with open(
-                os.path.join(
-                    os.path.dirname(os.path.abspath(__file__)),
-                    f"profiles/{codename}.png",
-                ),
-                "wb",
+                    os.path.join(
+                        os.path.dirname(os.path.abspath(__file__)),
+                        f"profiles/{codename}.png",
+                    ),
+                    "wb",
             ) as f:
                 f.write(res.content)
         else:
@@ -54,11 +52,11 @@ op_content = driver.page_source
 op_soup = BeautifulSoup(op_content, "html5lib")
 
 with open(
-    os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        "tags.json",
-    ),
-    "r",
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "tags.json",
+        ),
+        "r",
 ) as f:
     tags_dict = json.load(f)
 
@@ -77,7 +75,8 @@ for each in op_soup.find_all("tr", class_="result-row"):
     profession = unquote(each.contents[0].div.a.contents[2].img["src"])[-6:-4]
     tag += tags_dict[profession]
 
-    for each_tag in filter(lambda x: x.name != "br", each.contents[11].div.contents):
+    for each_tag in filter(lambda x: x.name != "br",
+                           each.contents[11].div.contents):
         tag += tags_dict[each_tag]
     if rareness == 5:
         tag += tags_dict["资深干员"]
@@ -93,8 +92,9 @@ for each in op_soup.find_all("tr", class_="result-row"):
             detail_soup = BeautifulSoup(detail_content, "html5lib")
 
             acquire_method = detail_soup.find(
-                "th", style="width:25%; background-color:#797979;", string="获得方式\n"
-            ).next_sibling.next_sibling.get_text()
+                "th",
+                style="width:25%; background-color:#797979;",
+                string="获得方式\n").next_sibling.next_sibling.get_text()
             break
         except Exception as e:
             if retry > 0:
@@ -121,16 +121,16 @@ for each in op_soup.find_all("tr", class_="result-row"):
     operators.append(add_op)
 
 with open(
-    os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        output,
-    ),
-    "w",
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            output,
+        ),
+        "w",
 ) as f:
     json.dump(operators, f)
 
 print("结束，添加总数" + str(success))
 purge_response = requests.get(
     "https://purge.jsdelivr.net/gh/V04/ark_toolbox@latest/scraper/operators.json"
-).json()["cdn"]
+).json()
 print(f"jsDelivr刷新缓存状态：{purge_response}")
