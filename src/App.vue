@@ -6,7 +6,7 @@
         aria-label="打开导航侧栏"
       ></v-app-bar-nav-icon>
       <v-toolbar-title>公开招募计算器</v-toolbar-title>
-      <v-spacer> </v-spacer>
+      <v-spacer></v-spacer>
       <v-btn icon @click="openBottomSheetClicked" aria-label="打开菜单">
         <v-icon>mdi-menu-open</v-icon>
       </v-btn>
@@ -80,7 +80,7 @@ const Recruit = () =>
         name: "keywords",
         content: "明日方舟 arknights 公开招募 公开招募计算器 公招 公招计算器"
       },
-      { name: "author", content: "Void04" }
+      { name: "author", content: "j4ger" }
     ]
   }
 })
