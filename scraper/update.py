@@ -9,7 +9,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select as Select
 from bs4 import BeautifulSoup
 from urllib.parse import unquote
-import xml.etree.ElementTree as ET
 
 output = "operators.json"
 
@@ -66,7 +65,7 @@ operators = []
 for each in op_soup.find_all("tr", class_="result-row"):
     name = each.contents[1].div.a.div.string
     codename = each.contents[1].div.contents[1].string
-    profile_url = each.contents[0].div.a.img["data-src"]
+    profile_url = "http:" + each.contents[0].div.a.img["data-src"]
     detail_url = "http://prts.wiki" + each.contents[1].div.a["href"]
     rareness = int(each.contents[0].div.a.contents[1].img["src"][-5:-4]) + 1
 
@@ -96,7 +95,7 @@ for each in op_soup.find_all("tr", class_="result-row"):
                 style="width:25%; background-color:#797979;",
                 string="获得方式\n").next_sibling.next_sibling.get_text()
             break
-        except Exception as e:
+        except Exception:
             if retry > 0:
                 retry -= 1
             else:
@@ -110,7 +109,7 @@ for each in op_soup.find_all("tr", class_="result-row"):
         try:
             add_op = new_op(name, codename, rareness, tag, profile_url)
             break
-        except Exception as e:
+        except Exception:
             if retry > 0:
                 retry -= 1
             else:
