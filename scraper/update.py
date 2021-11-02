@@ -10,34 +10,6 @@ from selenium.webdriver.support.select import Select as Select
 from bs4 import BeautifulSoup
 from urllib.parse import unquote
 
-output = "operators.json"
-
-
-def new_op(name, codename, rareness, tag, profile_url):
-    if not os.path.exists(
-            os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                         f"profiles/{codename}.png")):
-        res = requests.get(profile_url)
-        if res.status_code == 200:
-            with open(
-                    os.path.join(
-                        os.path.dirname(os.path.abspath(__file__)),
-                        f"profiles/{codename}.png",
-                    ),
-                    "wb",
-            ) as f:
-                f.write(res.content)
-        else:
-            raise ConnectionError(res.status_code)
-
-    return {
-        "name": name,
-        "codename": codename,
-        "rareness": rareness,
-        "tag": tag,
-    }
-
-
 options = Options()
 options.add_argument("--headless")
 driver = webdriver.Chrome("chromedriver", options=options)
@@ -60,11 +32,22 @@ with open(
     tags_dict = json.load(f)
 
 success = 0
-operators = []
+
+with open(
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "operators.json",
+        ),
+        "r",
+) as f:
+    operators = json.load(f)
 
 for each in op_soup.find_all("tr", class_="result-row"):
-    name = each.contents[1].div.a.div.string
     codename = each.contents[1].div.contents[1].string
+    if codename in operators:
+        continue
+
+    name = each.contents[1].div.a.div.string
     profile_url = "http:" + each.contents[0].div.a.img["data-src"]
     detail_url = "http://prts.wiki" + each.contents[1].div.a["href"]
     rareness = int(each.contents[0].div.a.contents[1].img["src"][-5:-4]) + 1
@@ -77,6 +60,7 @@ for each in op_soup.find_all("tr", class_="result-row"):
     for each_tag in filter(lambda x: x.name != "br",
                            each.contents[11].div.contents):
         tag += tags_dict[each_tag]
+
     if rareness == 5:
         tag += tags_dict["资深干员"]
     if rareness == 6:
@@ -107,28 +91,42 @@ for each in op_soup.find_all("tr", class_="result-row"):
     retry = 5
     while retry > 0:
         try:
-            add_op = new_op(name, codename, rareness, tag, profile_url)
-            break
+            res = requests.get(profile_url)
+            if res.status_code == 200:
+                with open(
+                        os.path.join(
+                            os.path.dirname(os.path.abspath(__file__)),
+                            f"profiles/{codename}.png",
+                        ),
+                        "wb",
+                ) as f:
+                    f.write(res.content)
+                    break
+            else:
+                raise ConnectionError(res.status_code)
         except Exception:
             if retry > 0:
                 retry -= 1
             else:
-                raise ConnectionError(f"下载 {name} 图片错误")
+                raise ConnectionError(f"5次尝试后下载 {name} 图片仍错误")
 
+    operators.append({
+        "name": name,
+        "codename": codename,
+        "rareness": rareness,
+        "tag": tag,
+    })
     success += 1
-    print("添加干员：" + name)
-    operators.append(add_op)
+    print(f"添加干员：{name}")
+    with open(
+            os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                         "operators.json"),
+            "w",
+    ) as f:
+        json.dump(operators, f)
 
-with open(
-        os.path.join(
-            os.path.dirname(os.path.abspath(__file__)),
-            output,
-        ),
-        "w",
-) as f:
-    json.dump(operators, f)
+print("结束，新增总数" + str(success))
 
-print("结束，添加总数" + str(success))
 purge_response = requests.get(
     "https://purge.jsdelivr.net/gh/V04/ark_toolbox@latest/scraper/operators.json"
 ).json()
