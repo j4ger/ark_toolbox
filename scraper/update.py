@@ -44,9 +44,6 @@ with open(
 
 for each in op_soup.find_all("tr", class_="result-row"):
     codename = each.contents[1].div.contents[1].string
-    if codename in operators:
-        continue
-
     name = each.contents[1].div.a.div.string
     profile_url = "http:" + each.contents[0].div.a.img["data-src"]
     detail_url = "http://prts.wiki" + each.contents[1].div.a["href"]
@@ -65,6 +62,17 @@ for each in op_soup.find_all("tr", class_="result-row"):
         tag += tags_dict["资深干员"]
     if rareness == 6:
         tag += tags_dict["高级资深干员"]
+
+    new_operator = {
+        "name": name,
+        "codename": codename,
+        "rareness": rareness,
+        "tag": tag,
+    }
+
+    if new_operator in operators:
+        print(f"跳过已有干员：{name}")
+        continue
 
     retry = 5
     while retry > 0:
@@ -110,20 +118,15 @@ for each in op_soup.find_all("tr", class_="result-row"):
             else:
                 raise ConnectionError(f"5次尝试后下载 {name} 图片仍错误")
 
-    operators.append({
-        "name": name,
-        "codename": codename,
-        "rareness": rareness,
-        "tag": tag,
-    })
+    operators.append(new_operator)
     success += 1
-    print(f"添加干员：{name}")
-    with open(
-            os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                         "operators.json"),
-            "w",
-    ) as f:
-        json.dump(operators, f)
+    print(f"添加新干员：{name}")
+    # with open(
+    #         os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    #                      "operators.json"),
+    #         "w",
+    # ) as f:
+    #     json.dump(operators, f)
 
 print("结束，新增总数" + str(success))
 
