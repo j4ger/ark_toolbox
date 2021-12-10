@@ -33,14 +33,7 @@ with open(
 
 success = 0
 
-with open(
-        os.path.join(
-            os.path.dirname(os.path.abspath(__file__)),
-            "operators.json",
-        ),
-        "r",
-) as f:
-    operators = json.load(f)
+operators = []
 
 for each in op_soup.find_all("tr", class_="result-row"):
     codename = each.contents[1].div.contents[1].string
@@ -70,10 +63,6 @@ for each in op_soup.find_all("tr", class_="result-row"):
         "tag": tag,
     }
 
-    if new_operator in operators:
-        print(f"跳过已有干员：{name}")
-        continue
-
     retry = 5
     while retry > 0:
         try:
@@ -97,36 +86,39 @@ for each in op_soup.find_all("tr", class_="result-row"):
         tag += tags_dict["公招可见"]
 
     retry = 5
-    while retry > 0:
-        try:
-            res = requests.get(profile_url)
-            if res.status_code == 200:
-                with open(
-                        os.path.join(
-                            os.path.dirname(os.path.abspath(__file__)),
-                            f"profiles/{codename}.png",
-                        ),
-                        "wb",
-                ) as f:
-                    f.write(res.content)
-                    break
-            else:
-                raise ConnectionError(res.status_code)
-        except Exception:
-            if retry > 0:
-                retry -= 1
-            else:
-                raise ConnectionError(f"5次尝试后下载 {name} 图片仍错误")
+    profile_file = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        f"profiles/{codename}.png",
+    )
+
+    if not os.path.exists(profile_file):
+        while retry > 0:
+            try:
+                res = requests.get(profile_url)
+                if res.status_code == 200:
+                    with open(
+                            profile_file,
+                            "wb",
+                    ) as f:
+                        f.write(res.content)
+                        break
+                else:
+                    raise ConnectionError(res.status_code)
+            except Exception:
+                if retry > 0:
+                    retry -= 1
+                else:
+                    raise ConnectionError(f"5次尝试后下载 {name} 图片仍错误")
 
     operators.append(new_operator)
     success += 1
     print(f"添加新干员：{name}")
-    # with open(
-    #         os.path.join(os.path.dirname(os.path.abspath(__file__)),
-    #                      "operators.json"),
-    #         "w",
-    # ) as f:
-    #     json.dump(operators, f)
+    with open(
+            os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                         "operators.json"),
+            "w",
+    ) as f:
+        json.dump(operators, f)
 
 print("结束，新增总数" + str(success))
 
