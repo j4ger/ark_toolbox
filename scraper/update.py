@@ -23,11 +23,11 @@ op_content = driver.page_source
 op_soup = BeautifulSoup(op_content, "html5lib")
 
 with open(
-        os.path.join(
-            os.path.dirname(os.path.abspath(__file__)),
-            "tags.json",
-        ),
-        "r",
+    os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "tags.json",
+    ),
+    "r",
 ) as f:
     tags_dict = json.load(f)
 
@@ -47,21 +47,13 @@ for each in op_soup.find_all("tr", class_="result-row"):
     profession = unquote(each.contents[0].div.a.contents[2].img["src"])[-6:-4]
     tag += tags_dict[profession]
 
-    for each_tag in filter(lambda x: x.name != "br",
-                           each.contents[11].div.contents):
+    for each_tag in filter(lambda x: x.name != "br", each.contents[11].div.contents):
         tag += tags_dict[each_tag]
 
     if rareness == 5:
         tag += tags_dict["资深干员"]
     if rareness == 6:
         tag += tags_dict["高级资深干员"]
-
-    new_operator = {
-        "name": name,
-        "codename": codename,
-        "rareness": rareness,
-        "tag": tag,
-    }
 
     retry = 5
     while retry > 0:
@@ -72,9 +64,8 @@ for each in op_soup.find_all("tr", class_="result-row"):
             detail_soup = BeautifulSoup(detail_content, "html5lib")
 
             acquire_method = detail_soup.find(
-                "th",
-                style="width:25%; background-color:#797979;",
-                string="获得方式\n").next_sibling.next_sibling.get_text()
+                "th", style="width:25%; background-color:#797979;", string="获得方式\n"
+            ).next_sibling.next_sibling.get_text()
             break
         except Exception:
             if retry > 0:
@@ -84,6 +75,13 @@ for each in op_soup.find_all("tr", class_="result-row"):
 
     if "公开招募" in acquire_method:
         tag += tags_dict["公招可见"]
+
+    new_operator = {
+        "name": name,
+        "codename": codename,
+        "rareness": rareness,
+        "tag": tag,
+    }
 
     retry = 5
     profile_file = os.path.join(
@@ -97,8 +95,8 @@ for each in op_soup.find_all("tr", class_="result-row"):
                 res = requests.get(profile_url)
                 if res.status_code == 200:
                     with open(
-                            profile_file,
-                            "wb",
+                        profile_file,
+                        "wb",
                     ) as f:
                         f.write(res.content)
                         break
@@ -114,9 +112,8 @@ for each in op_soup.find_all("tr", class_="result-row"):
     success += 1
     print(f"添加新干员：{name}")
     with open(
-            os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                         "operators.json"),
-            "w",
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "operators.json"),
+        "w",
     ) as f:
         json.dump(operators, f)
 
