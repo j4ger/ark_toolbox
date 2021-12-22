@@ -20,7 +20,7 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title>明日方舟工具箱</v-list-item-title>
-            <v-list-item-subtitle>ak.rua.best</v-list-item-subtitle>
+            <v-list-item-subtitle>ak.j4ger.cn</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list-item>
