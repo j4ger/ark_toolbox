@@ -14,7 +14,7 @@
 
     <v-navigation-drawer temporary v-model="drawer" app>
       <v-list-item>
-        <v-list-item two-line link href="https://ak.rua.best/">
+        <v-list-item two-line link href="https://ak.j4ger.cn/">
           <v-list-item-avatar tile size="40">
             <v-img src="./assets/favicon.png"></v-img>
           </v-list-item-avatar>
